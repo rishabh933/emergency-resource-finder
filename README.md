@@ -5,8 +5,7 @@ multidimensional range query analysis, applied to a real-world use case:
 fast nearest-resource and range lookup for emergency hospitals, ambulance
 services, and fire stations across **Gwalior, Madhya Pradesh, India**.
 
-**Live demo:** _add your GitHub Pages link here after deploying (see below)_
-
+🚀 **Live Demo:** [Click here](https://rishabh933.github.io/emergency-resource-finder/)
 ## What this is
 
 Three search strategies, built from scratch, compared head-to-head on the
