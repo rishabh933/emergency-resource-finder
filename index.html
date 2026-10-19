@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smart Emergency Resource Finder &mdash; Gwalior</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header>
+  <h1>&#128657; Smart Emergency Resource Finder &mdash; Gwalior, MP</h1>
+  <nav>
+    <a href="index.html">Map Demo</a>
+    <a href="benchmark.html">Benchmark</a>
+    <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <section class="map-panel">
+    <canvas id="mapCanvas" width="820" height="620"></canvas>
+    <div class="legend">
+      <span><span class="dot hospital"></span> Hospital</span>
+      <span><span class="dot ambulance"></span> Ambulance</span>
+      <span><span class="dot fireStation"></span> Fire Station</span>
+      <span><span class="dot query"></span> Query point</span>
+    </div>
+  </section>
+
+  <aside class="side-panel">
+    <div class="card">
+      <h2>Query</h2>
+
+      <div class="field">
+        <label for="resourceType">Resource type</label>
+        <select id="resourceType">
+          <option value="hospital">Hospital</option>
+          <option value="ambulance">Ambulance</option>
+          <option value="fireStation">Fire Station</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="queryMode">Query mode</label>
+        <select id="queryMode">
+          <option value="nearest">Nearest resource</option>
+          <option value="range">Range (radius) search</option>
+        </select>
+      </div>
+
+      <div class="field" style="display:none;">
+        <label for="radiusSlider">Radius: <span id="radiusValue">1500 m</span></label>
+        <input type="range" id="radiusSlider" min="200" max="8000" step="100" value="1500" />
+      </div>
+
+      <div class="field" style="flex-direction:row; align-items:center; gap:0.5rem;">
+        <input type="checkbox" id="showGrid" />
+        <label for="showGrid" style="margin:0;">Show Quadtree subdivisions</label>
+      </div>
+
+      <button id="locateBtn" type="button">&#128205; Use my location</button>
+      <button id="runQueryBtn">Run Query</button>
+      <p class="hint" id="hint">Use your location, or click anywhere on the map to place a query point, then Run Query.</p>
+    </div>
+
+    <div class="card">
+      <h2>Engine Comparison</h2>
+      <table>
+        <thead>
+          <tr><th>Engine</th><th>Matches</th><th>Nodes visited</th><th>Time (ms)</th></tr>
+        </thead>
+        <tbody id="metricsBody"></tbody>
+      </table>
+      <p id="consistencyNote"></p>
+    </div>
+
+    <div class="card">
+      <h2>Results</h2>
+      <ul id="resultsList"><li>No query run yet.</li></ul>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  Dataset: real hospital, ambulance, and fire-station locations in Gwalior, Madhya Pradesh, compiled from public place listings for academic demonstration &mdash; not for actual emergency dispatch.
+</footer>
+
+<script src="data/resources.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/resourceModel.js"></script>
+<script src="js/bruteForce.js"></script>
+<script src="js/quadtree.js"></script>
+<script src="js/kdtree.js"></script>
+<script src="js/mapRenderer.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Benchmark &mdash; Smart Emergency Resource Finder</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header>
+  <h1>&#128202; Performance Benchmark</h1>
+  <nav>
+    <a href="index.html">Map Demo</a>
+    <a href="benchmark.html">Benchmark</a>
+  </nav>
+</header>
+
+<div class="bench-wrap">
+  <div class="card">
+    <h2>Brute-force vs. Quadtree vs. K-D Tree (nearest-neighbor queries)</h2>
+    <p style="font-size:0.9rem; color:#555;">
+      Generates synthetic datasets of increasing size within Gwalior's bounding box, builds a
+      Quadtree and a K-D Tree for each size, and runs 20 repeated random nearest-neighbor queries
+      against the hospital subset, averaging the nodes-visited and time-taken for each approach.
+      This implements the benchmarking methodology from Milestone 2.
+    </p>
+    <button id="runBenchBtn">Run Benchmark</button>
+  </div>
+
+  <div class="card">
+    <canvas id="benchChart" width="1000" height="260"></canvas>
+    <div class="legend" style="margin-top:0.5rem;">
+      <span><span class="dot" style="background:#e63946;"></span> Brute-force</span>
+      <span><span class="dot" style="background:#2a9d8f;"></span> Quadtree</span>
+      <span><span class="dot" style="background:#457b9d;"></span> K-D Tree</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2">N</th>
+          <th colspan="2">Brute-force</th>
+          <th colspan="3">Quadtree</th>
+          <th colspan="3">K-D Tree</th>
+        </tr>
+        <tr>
+          <th>Nodes</th><th>Time (ms)</th>
+          <th>Nodes</th><th>Time (ms)</th><th>Build (ms)</th>
+          <th>Nodes</th><th>Time (ms)</th><th>Build (ms)</th>
+        </tr>
+      </thead>
+      <tbody id="benchBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  Synthetic benchmark data only &mdash; the main map demo uses the real Gwalior dataset.
+</footer>
+
+<script src="data/resources.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/resourceModel.js"></script>
+<script src="js/bruteForce.js"></script>
+<script src="js/quadtree.js"></script>
+<script src="js/kdtree.js"></script>
+<script src="js/benchmark.js"></script>
+</body>
+</html>
